@@ -11,6 +11,7 @@ public class MyTest {
 	driver.get("http://15.207.106.212:3000/");
 	Thread.sleep(6000);
 	driver.manage().window().maximize();
+	//comment
 }
 
 
