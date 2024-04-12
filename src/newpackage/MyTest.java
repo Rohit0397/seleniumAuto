@@ -12,7 +12,6 @@ public class MyTest {
 	Thread.sleep(6000);
 	driver.manage().window().maximize();
 	//comment
-	// do the comment
 }
 
 
