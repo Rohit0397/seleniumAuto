@@ -1,12 +1,10 @@
 package newpackage;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
-
 
 public class TataCli {
 	public static void main (String[] args) throws InterruptedException {
@@ -15,23 +13,29 @@ public class TataCli {
 	WebDriver driver = new ChromeDriver();
 	System.out.print("Chrome Launched");
 	driver.get("https://www.tatacliq.com/");
-	Thread.sleep(6000);
+	Thread.sleep(4000);
 	driver.manage().window().maximize();
 	
 	Thread.sleep(3000);
 	
-	WebElement searchField = driver.findElement(By.xpath("//div[@class ='Input2__box Input2__base']/input[@id='search-text-input']"));
-	String txt = "Men";
-	searchField.sendKeys(txt);
-	Thread.sleep(2000);
+	WebElement noClick = driver.findElement(By.xpath("//button[@class='No thanks']"));
+	noClick.click();
 	
-	/* Wait for the suggestions to appear
-    WebDriverWait wait = new WebDriverWait(driver, 10);
-    wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class='SearchPage__searchResultsWithPopularProduct']")));
-	*/
+	Thread.sleep(5000);
 	
-    // Select the first suggestion from the drop down options
-    WebElement suggestion = driver.findElement(By.xpath("//div[@class='SearchPage__back']//div[@class='SearchResultItem__base']//span[contains(text(),'men') and contains(@class,'')]/following-sibling::span[contains(text(),'s tshirt') and contains(@class,'SearchResultItem__bolder')]"));
+	//WebElement crossClick = driver.findElement(By.xpath("//a[@href=\"javascript:void(0);\"]"));
+	//crossClick.click();
+	
+	//Thread.sleep(2000);
+	
+	JavascriptExecutor js = (JavascriptExecutor) driver;
+
+	js.executeScript("window.scrollTo(0, window.innerHeight/2);");
+	
+    Thread.sleep(3000);
+	
+    // Select the options
+    WebElement suggestion = driver.findElement(By.xpath("//img[@class='Image__actual'][@src='//assets.tatacliq.com/medias/sys_master/images/50557264068638.jpg']"));
     suggestion.click();
 	
 }
