@@ -16,7 +16,7 @@ public class ScreenShot {
         // Create a new instance of the ChromeDriver
         WebDriver driver = new ChromeDriver();
 
-        // Open a website
+        // Open a website with the help of below url
         driver.get("https://www.google.com");
         Thread.sleep(2000);
         driver.manage().window().maximize();
@@ -34,6 +34,7 @@ public class ScreenShot {
         }
 
         // Close the browser
+        // Quit the browser
         driver.quit();
     }
 }
